@@ -10,7 +10,7 @@ if __name__ == '__main__':
     image_links = image_links[:10]
 
     # Specify the download folder
-    download_folder = '/downloads'
+    download_folder = 'downloads'
 
     # Call the download_images function
-    download_images(image_links, download_folder, allow_multiprocessing=True)
+    download_images(image_links, download_folder, allow_multiprocessing=False)
