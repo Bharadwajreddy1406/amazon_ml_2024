@@ -1,7 +1,5 @@
 import pandas as pd
 import torch
-
-from src.utils import download_images
 import easyocr
 import re
 from pathlib import Path
@@ -20,18 +18,11 @@ def clean_extracted_text(extracted_text):
     return cleaned_data
 
 if __name__ == '__main__':
-    # Read the CSV file
-    train_df = pd.read_csv(r"dataset/train.csv")
-
-    # Extract the image links
-    image_links = train_df['image_link'].tolist()
-    image_links = image_links[:10]
-
     # Specify the download folder
-    download_folder = 'downloads'
+    download_folder = Path('downloads')
 
-    # Call the download_images function
-    # download_images(image_links, download_folder, allow_multiprocessing=False)
+    # Get all image paths in the download folder
+    image_paths = list(download_folder.glob('*.jpg'))
 
     # Check if CUDA is available
     use_cuda = torch.cuda.is_available()
@@ -40,18 +31,22 @@ if __name__ == '__main__':
     results = []
 
     # Extract and clean text from downloaded images
-    for image_link in image_links:
-        image_path = Path(download_folder) / Path(image_link).name
+    for index, image_path in enumerate(image_paths):
         extracted_text = extract_text_from_image(str(image_path), use_cuda=use_cuda)
         cleaned_text = clean_extracted_text(extracted_text)
-        print(f"Extracted text from {image_path}: {cleaned_text}")
+
+        # Format the prediction
+        if cleaned_text:
+            prediction = f"{cleaned_text[0][0]} {cleaned_text[0][1]}"
+        else:
+            prediction = ""
 
         # Append results to the list
         results.append({
-            'image_path': str(image_path),
-            'extracted_text': cleaned_text
+            'index': index + 1,
+            'prediction': prediction
         })
 
     # Convert results to DataFrame and save as CSV
     results_df = pd.DataFrame(results)
-    results_df.to_csv('outputs/extracted_text.csv', index=False)
+    results_df.to_csv('outputs/test_out.csv', index=False)
