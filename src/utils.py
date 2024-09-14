@@ -13,7 +13,7 @@ from functools import partial
 import requests
 import urllib
 from PIL import Image
-#
+
 #
 # def common_mistake(unit):
 #     if unit in constants.allowed_units:
@@ -38,8 +38,8 @@ from PIL import Image
 #         raise ValueError("Invalid unit [{}] found in {}. Allowed units: {}".format(
 #             unit, s, constants.allowed_units))
 #     return number, unit
-#
-#
+
+
 def create_placeholder_image(image_save_path):
     try:
         placeholder_image = Image.new('RGB', (100, 100), color='black')

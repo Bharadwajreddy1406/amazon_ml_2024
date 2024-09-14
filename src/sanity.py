@@ -14,7 +14,7 @@ def check_file(filename):
 def sanity_check(test_filename, output_filename):
     check_file(test_filename)
     check_file(output_filename)
-    
+
     try:
         test_df = pd.read_csv(test_filename)
         output_df = pd.read_csv(output_filename)
