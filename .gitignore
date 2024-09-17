@@ -5,7 +5,7 @@
 /.cadence
 /dataset
 /final_custos
-/script.py
-/temp.py
-/requirements.txt
+script.py
+temp.py
+requirements.txt
 /temps
