@@ -31,6 +31,27 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\final_custos\outputs\test_out.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\final_custos\test.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\final_custos\train.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\outputs\extracted_text.csv">
           <value>
             <Attribute>

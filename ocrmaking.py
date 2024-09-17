@@ -135,4 +135,4 @@ if __name__ == '__main__':
     results_df.to_csv('outputs/test_out1.csv', index=False)
 
 print("collecting garbage")
-gc.collect()
+# gc.collect()

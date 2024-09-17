@@ -118,12 +118,10 @@ df = df[['image_name', 'image_path','entity_value']]
 def process_images(df):
     extracted_data = []
 
-    i = 0
     # Iterate over each row in the DataFrame
     for index, row in df.iterrows():
         try:
-            if i == 20:
-                return df
+
 
             image_path = row['image_path']
             if row["image_name"] in image_path:
@@ -150,11 +148,10 @@ def process_images(df):
 
     # Step 4: Add the extracted data as a new column in the DataFrame
     df['extracted_text'] = extracted_data
-    i += 1
 
     return df
 
 # Step 5: Call the function and store the results
-df = process_images(df)
+# df = process_images(df)
 # df.to_csv('outputs/finalTests.csv', index = True)
 # print(df.head(10))
